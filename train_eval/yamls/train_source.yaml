@@ -1,0 +1,108 @@
+# Phase II — Source-Only Training (paper Section 3.2).
+# Trains the backbone + classifier on the synthetic Fruits-3D source dataset
+# only. The Network Stability Scheduler (NSS) orchestrates progression from
+# baseline training → hyper-parameter tuning (drop-rate / focal-gamma changes
+# per paper Tables 3-4).
+#
+# Edit the [storage] paths before running.
+
+general:
+  tag: train_source
+  operation: Training
+  stage: train_source
+  seed: 42
+
+storage:
+  remote_folder: ./data/Fruits-3D
+  local_folder: ./data/Fruits-3D
+  source_folder: ./data/Fruits-3D/hdr_nature_n100_hdr_studio_n50_solid_color_n50_sculpture_n40
+  test_folders: { }
+  destination_folder: ./runs
+  backup_folder: ./runs/backups
+
+pretrained:
+  weights_only: True
+  model: best_source_validation_on_source
+  base_models: { }
+
+dataset:
+  source_cross_val_k: 1,2,3,4,5
+  num_workers: 8
+  dataset_type: hdrn_hdrs_sc_sculpture
+  data_augmentations: {
+    default:    transforms_general,
+    hdr_nature: transforms_v2,
+    hdr_studio: transforms_v2,
+    solid_color: transforms_v3,
+    sculpture:  transforms_v5,
+  }
+
+training:
+  force_cpu: False
+  gpu_id: 0
+  train_batch_size: 128
+  eval_batch_size: 256
+
+feature_extractor:
+  unfrozen_all_layers: True
+  timm_model: repvgg_b3.rvgg_in1k     # paper's primary backbone
+  pretrained: False                    # train from scratch (no ImageNet)
+  optimizer: AdamW
+  scheduler: ReduceLROnPlateau
+  scheduler_mode: max
+  scheduler_factor: 0.1
+  scheduler_patience: 2
+  scheduler_cooldown: 3
+  optimizer_weight_decay: 1e-2
+  layer_wise_lr_decay_gamma: 0.92
+
+  default:
+    drop_rate: 0.1                     # baseline phase
+    drop_path_rate: 0.1                # baseline phase
+    optimizer_learning_rate: 3e-4
+
+classifier:
+  hidden_dims: [ 512, 256, 128 ]
+  optimizer: AdamW
+  scheduler: ReduceLROnPlateau
+  scheduler_mode: max
+  scheduler_factor: 0.1
+  scheduler_patience: 2
+  scheduler_cooldown: 3
+  optimizer_weight_decay: 1e-2
+
+  default:
+    drop_rate: 0.3                     # baseline phase
+    optimizer_learning_rate: 3e-4
+
+focal_loss:
+  beta: 0.999
+  gamma: 2.0                           # baseline phase per paper §3.2
+  reduction: mean
+  eps: 1e-7
+
+mixup_criterion:
+  default:
+    mixup_prob: 0.0
+
+  finetune_source_mixup:
+    mixup_alpha: 0.3
+    cutmix_alpha: 1.0
+    mixup_prob: 0.5
+    switch_prob: 0.5
+    mode: batch
+    label_smoothing: 0.05
+    mixup_prob_delta: 0.010
+    scheduler_mode: cyclic
+
+stage_scheduler:                       # Network Stability Scheduler (NSS)
+  min_patience: 10
+  max_patience: 30
+  warmup_epochs: 5
+  best_improve_eps: 1e-6
+  post_best_grace_epochs: 2
+
+evaluation:
+  source: True
+  target: False
+  reports: False
