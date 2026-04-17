@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: >-
+  If you use this code, the Fruits-3D dataset, the 3D assets, or any derived
+  artefact (research, technical report, product, blog, tutorial, fork, or any
+  other public derivative), you must cite the paper below. Citation is a
+  required condition of use.
+title: "CoDA: A Cognitive-Inspired Approach for Domain Adaptation"
+abstract: >-
+  CoDA is a synthetic-to-real Unsupervised Domain Adaptation framework
+  inspired by infant cognitive development. It generates a shape-biased
+  synthetic source dataset (Fruits-3D) from textured 3D assets, trains a
+  classifier from scratch with a Network Stability Scheduler (NSS), and
+  adapts it to unlabeled real-world targets via Dynamic Top-K
+  Pseudo-Labeling. On VegFru, Fruits-262, and Open Images v7 (5-class
+  subsets), the framework matches or exceeds an ImageNet-pretrained
+  baseline while training on only 12,000 synthetic images.
+type: software
+authors:
+  - family-names: Gemirter
+    given-names: Cavide Balki
+    affiliation: "Yeditepe University, Department of Computer Engineering"
+    email: cavidebalki.gemirter@std.yeditepe.edu.tr
+  - family-names: Korkmaz
+    given-names: Emin Erkan
+    affiliation: "Yeditepe University, Department of Computer Engineering"
+  - family-names: Goularas
+    given-names: Dionysis
+    affiliation: "Yeditepe University, Department of Computer Engineering"
+repository-code: "https://github.com/cbalkig/CoDA"
+url: "https://github.com/cbalkig/CoDA"
+keywords:
+  - deep-learning
+  - transfer-learning
+  - unsupervised-domain-adaptation
+  - synthetic-data
+  - shape-bias
+  - pseudo-labeling
+preferred-citation:
+  type: article
+  title: "CoDA: A Cognitive-Inspired Approach for Domain Adaptation"
+  authors:
+    - family-names: Gemirter
+      given-names: Cavide Balki
+    - family-names: Korkmaz
+      given-names: Emin Erkan
+    - family-names: Goularas
+      given-names: Dionysis
+  journal: "Applied Sciences"
+  year: 2026
+  notes: "Submitted"

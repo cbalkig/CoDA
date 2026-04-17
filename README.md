@@ -8,6 +8,18 @@ Reference implementation for the paper
 > Submitted to *Applied Sciences* (MDPI), April 2026.
 > Full manuscript: [`CoDA.pdf`](./CoDA.pdf)
 
+> [!IMPORTANT]
+> ### 📣 Citation is mandatory
+>
+> **If you use this code, the Fruits-3D dataset, the 3D assets, or any
+> derived artefact — in academic work, a technical report, a product, a
+> blog post, a tutorial, or a fork — you must cite the paper.**
+>
+> Copy the BibTeX entry from the [Citation](#citation) section at the bottom
+> of this README, or use GitHub's "Cite this repository" button (backed by
+> [`CITATION.cff`](./CITATION.cff)). Redistributions of the 3D models and
+> the Fruits-3D renders are conditional on this attribution.
+
 CoDA is a synthetic-to-real Unsupervised Domain Adaptation (UDA) framework
 that takes inspiration from infant cognitive development. It generates a
 shape-biased synthetic source dataset from textured 3D assets, trains a
@@ -394,7 +406,14 @@ See `requirements.txt`. Key versions:
 
 ## Citation
 
-If you use this code or the Fruits-3D dataset, please cite:
+**Citation is a required condition for any use** of this repository — source
+code, the Fruits-3D dataset, the 3D `.usdz` assets shared via Drive, and any
+rendered artefacts derived from them. This applies to research papers,
+technical reports, student projects, blog posts, tutorials, product
+integrations, forks, and any public derivative work. If the paper is not
+cited, permission to use these artefacts is not granted.
+
+BibTeX:
 
 ```bibtex
 @article{gemirter2026coda,
@@ -402,6 +421,17 @@ If you use this code or the Fruits-3D dataset, please cite:
   author  = {Gemirter, Cavide Balki and Korkmaz, Emin Erkan and Goularas, Dionysis},
   journal = {Applied Sciences},
   year    = {2026},
-  note    = {Submitted}
+  note    = {Submitted},
+  url     = {https://github.com/cbalkig/CoDA}
 }
 ```
+
+Plain-text:
+
+> Gemirter, C. B., Korkmaz, E. E., & Goularas, D. (2026). *CoDA: A
+> Cognitive-Inspired Approach for Domain Adaptation*. Applied Sciences
+> (submitted). https://github.com/cbalkig/CoDA
+
+GitHub users: click **“Cite this repository”** in the sidebar — the button is
+powered by [`CITATION.cff`](./CITATION.cff) and produces both BibTeX and
+APA formats.

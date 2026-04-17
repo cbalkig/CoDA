@@ -2,17 +2,16 @@
 # CITATION REQUIRED: Using this config or its outputs obliges you to cite
 # the CoDA paper. See README.md#citation and CITATION.cff.
 # ─────────────────────────────────────────────────────────────────────────
-# Phase III — Joint Optimization with Dynamic Top-K Pseudo-Labeling
-# (paper Section 3.3). Loads the Phase II checkpoint (set via
-# pretrained.base_models) and adapts it on the unlabeled target domain
-# using the Dynamic Top-K strategy (paper Section 3.3.1).
+# Supervised upper bound on the target domain (paper Section 5, Table 5
+# "From-Scratch" / "ImageNet" comparisons). Trains directly on labeled
+# target data — used as a reference ceiling that UDA approaches aim to match.
 #
-# Edit storage.target_folder to your target dataset (VegFru / Fruits-262 / OI-v7).
+# Edit storage.target_folder to the labeled target dataset.
 
 general:
-  tag: train_target
+  tag: train_upper_target
   operation: Training
-  stage: train_target
+  stage: train_upper_target
   seed: 42
 
 storage:
@@ -30,13 +29,7 @@ storage:
 pretrained:
   weights_only: True
   model: best_source_validation_on_source
-  base_models: {                       # CV-fold → Phase II run tag (must already exist)
-    1: train_source_1_train_source,
-    2: train_source_2_train_source,
-    3: train_source_3_train_source,
-    4: train_source_4_train_source,
-    5: train_source_5_train_source,
-  }
+  base_models: { }
 
 dataset:
   source_cross_val_k: 1,2,3,4,5
@@ -56,12 +49,6 @@ training:
   gpu_id: 0
   train_batch_size: 128
   eval_batch_size: 256
-  lambdas:                              # paper Eq. (6): λ_S=1.0, λ_T=0.7
-    domains:
-      source: 1.0
-      target: 0.7
-    in_domain:
-      classification: 1
 
 feature_extractor:
   unfrozen_all_layers: True
@@ -71,7 +58,7 @@ feature_extractor:
   scheduler: ReduceLROnPlateau
   scheduler_mode: max
   scheduler_factor: 0.1
-  scheduler_patience: 20                # paper §3.3.2 — patience 20, cooldown 3
+  scheduler_patience: 20
   scheduler_cooldown: 3
   optimizer_weight_decay: 1e-2
   layer_wise_lr_decay_gamma: 0.92
@@ -95,16 +82,9 @@ classifier:
     drop_rate: 0.4
     optimizer_learning_rate: 3e-4
 
-pseudo_label:                          # Dynamic Top-K Pseudo-Labeling (paper §3.3.1)
-  default:
-    type: dynamic_top
-    initial_threshold: 0.10            # initial top-K fraction
-    final_threshold: 0.25              # max top-K fraction
-    delta: 0.01                        # per-epoch ramp
-
 focal_loss:
   beta: 0.999
-  gamma: 0.0                           # tuning phase per paper §3.2
+  gamma: 0.0
   reduction: mean
   eps: 1e-7
 
@@ -130,6 +110,6 @@ stage_scheduler:
   post_best_grace_epochs: 2
 
 evaluation:
-  source: True
+  source: False
   target: True
-  reports: False
+  reports: True

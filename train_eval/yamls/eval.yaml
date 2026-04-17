@@ -1,3 +1,7 @@
+# ─────────────────────────────────────────────────────────────────────────
+# CITATION REQUIRED: Using this config or its outputs obliges you to cite
+# the CoDA paper. See README.md#citation and CITATION.cff.
+# ─────────────────────────────────────────────────────────────────────────
 # Evaluation across all three real-world target datasets
 # (paper Section 4.1, Table 5: VegFru, Fruits-262, OI-v7).
 # Loads the trained checkpoints listed in pretrained.base_models and reports
