@@ -1,0 +1,11 @@
+tensorboard:
+  # Path to the TensorBoard log directory.
+  # Either an absolute path, or relative to the directory you launch from.
+  # Edit this to point at the run you want to inspect, then:
+  #   ./.venv/bin/python run.py tb              # uses this file
+  # or override on the CLI:
+  #   ./.venv/bin/python run.py tb --logdir <path>
+  log_dir: ./runs/<run_tag>/<model_id>/tensorboard
+  port: 6007
+  refresh_interval: 10
+  host: "0.0.0.0"

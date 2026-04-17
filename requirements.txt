@@ -1,0 +1,25 @@
+pip~=25.3
+setuptools~=80.9.0
+
+# Shared
+numpy~=1.26.4
+pandas~=2.3.3
+seaborn~=0.13.2
+scipy~=1.16.1
+
+# train_eval (UDA classifier)
+timm~=1.0.22
+gcsfs~=2025.10.0
+joblib~=1.5.2
+scikit-learn~=1.7.2
+tensorboard~=2.20.0
+torch~=2.9.1
+torchvision~=0.24.1
+
+# image_gen_3d_to_2d (Blender renderer)
+bpy~=4.4.0
+mathutils~=3.3.0
+tqdm~=4.67.1
+pillow~=11.2.1
+matplotlib~=3.10.3
+openpyxl~=3.1.5

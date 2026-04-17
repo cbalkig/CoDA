@@ -1,0 +1,115 @@
+# ─────────────────────────────────────────────────────────────────────────
+# CITATION REQUIRED: Using this config or its outputs obliges you to cite
+# the CoDA paper. See README.md#citation and CITATION.cff.
+# ─────────────────────────────────────────────────────────────────────────
+# Supervised upper bound on the target domain (paper Section 5, Table 5
+# "From-Scratch" / "ImageNet" comparisons). Trains directly on labeled
+# target data — used as a reference ceiling that UDA approaches aim to match.
+#
+# Edit storage.target_folder to the labeled target dataset.
+
+general:
+  tag: train_upper_target
+  operation: Training
+  stage: train_upper_target
+  seed: 42
+
+storage:
+  remote_folder: ./data/Fruits-3D
+  local_folder: ./data/Fruits-3D
+  source_folder: ./data/Fruits-3D/hdr_nature_n100_hdr_studio_n50_solid_color_n50_sculpture_n40
+  target_folder: ./data/targets/vegfru/train_val_test
+  test_folders:
+    VegFru:     ./data/targets/vegfru/test
+    Fruits-262: ./data/targets/fruits262/test
+    OI_v7:      ./data/targets/oi_v7/test
+  destination_folder: ./runs
+  backup_folder: ./runs/backups
+
+pretrained:
+  weights_only: True
+  model: best_source_validation_on_source
+  base_models: { }
+
+dataset:
+  source_cross_val_k: 1,2,3,4,5
+  num_workers: 8
+  eval_test: True
+  dataset_type: hdrn_hdrs_sc_sculpture
+  data_augmentations: {
+    default:    transforms_general,
+    hdr_nature: transforms_v2,
+    hdr_studio: transforms_v2,
+    solid_color: transforms_v3,
+    sculpture:  transforms_v5,
+  }
+
+training:
+  force_cpu: False
+  gpu_id: 0
+  train_batch_size: 128
+  eval_batch_size: 256
+
+feature_extractor:
+  unfrozen_all_layers: True
+  timm_model: repvgg_b3.rvgg_in1k
+  pretrained: False
+  optimizer: AdamW
+  scheduler: ReduceLROnPlateau
+  scheduler_mode: max
+  scheduler_factor: 0.1
+  scheduler_patience: 20
+  scheduler_cooldown: 3
+  optimizer_weight_decay: 1e-2
+  layer_wise_lr_decay_gamma: 0.92
+
+  default:
+    drop_rate: 0.1
+    drop_path_rate: 0.2
+    optimizer_learning_rate: 3e-4
+
+classifier:
+  hidden_dims: [ 512, 256, 128 ]
+  optimizer: AdamW
+  scheduler: ReduceLROnPlateau
+  scheduler_mode: max
+  scheduler_factor: 0.1
+  scheduler_patience: 20
+  scheduler_cooldown: 3
+  optimizer_weight_decay: 1e-2
+
+  default:
+    drop_rate: 0.4
+    optimizer_learning_rate: 3e-4
+
+focal_loss:
+  beta: 0.999
+  gamma: 0.0
+  reduction: mean
+  eps: 1e-7
+
+mixup_criterion:
+  default:
+    mixup_prob: 0.0
+
+  finetune_source_mixup:
+    mixup_alpha: 0.3
+    cutmix_alpha: 1.0
+    mixup_prob: 0.5
+    switch_prob: 0.5
+    mode: batch
+    label_smoothing: 0.05
+    mixup_prob_delta: 0.010
+    scheduler_mode: cyclic
+
+stage_scheduler:
+  min_patience: 10
+  max_patience: 30
+  warmup_epochs: 5
+  best_improve_eps: 1e-6
+  post_best_grace_epochs: 2
+
+evaluation:
+  source: False
+  target: True
+  reports: True
