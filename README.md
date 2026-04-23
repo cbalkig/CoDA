@@ -416,13 +416,18 @@ cited, permission to use these artefacts is not granted.
 BibTeX:
 
 ```bibtex
-@article{gemirter2026coda,
-  title   = {CoDA: A Cognitive-Inspired Approach for Domain Adaptation},
-  author  = {Gemirter, Cavide Balki and Korkmaz, Emin Erkan and Goularas, Dionysis},
-  journal = {Applied Sciences},
-  year    = {2026},
-  note    = {Submitted},
-  url     = {https://github.com/cbalkig/CoDA}
+
+@Article{app16094115,
+AUTHOR = {Gemirter, Cavide Balkı and Korkmaz, Emin Erkan and Goularas, Dionysis},
+TITLE = {CoDA: A Cognitive-Inspired Approach for Domain Adaptation},
+JOURNAL = {Applied Sciences},
+VOLUME = {16},
+YEAR = {2026},
+NUMBER = {9},
+ARTICLE-NUMBER = {4115},
+URL = {https://www.mdpi.com/2076-3417/16/9/4115},
+ISSN = {2076-3417},
+DOI = {10.3390/app16094115}
 }
 ```
 
