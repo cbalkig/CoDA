@@ -40,11 +40,18 @@ preferred-citation:
   title: "CoDA: A Cognitive-Inspired Approach for Domain Adaptation"
   authors:
     - family-names: Gemirter
-      given-names: Cavide Balki
+      given-names: Cavide Balkı
     - family-names: Korkmaz
       given-names: Emin Erkan
     - family-names: Goularas
       given-names: Dionysis
   journal: "Applied Sciences"
+  publisher:
+    name: "MDPI"
   year: 2026
-  notes: "Submitted"
+  volume: 16
+  issue: 9
+  article-number: "4115"
+  issn: "2076-3417"
+  doi: "10.3390/app16094115"
+  url: "https://www.mdpi.com/2076-3417/16/9/4115"

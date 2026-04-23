@@ -3,10 +3,10 @@
 Reference implementation for the paper
 
 > **CoDA: A Cognitive-Inspired Approach for Domain Adaptation**
-> Cavide Balki Gemirter, Emin Erkan Korkmaz, Dionysis Goularas
+> Cavide Balkı Gemirter, Emin Erkan Korkmaz, Dionysis Goularas
 > Yeditepe University, Department of Computer Engineering
-> Submitted to *Applied Sciences* (MDPI), April 2026.
-> Full manuscript: [`CoDA.pdf`](./CoDA.pdf)
+> *Applied Sciences* (MDPI), Vol. 16, No. 9, Article 4115, 2026.
+> DOI: [10.3390/app16094115](https://doi.org/10.3390/app16094115) · Full manuscript: [`CoDA.pdf`](./CoDA.pdf)
 
 > [!IMPORTANT]
 > ### 📣 Citation is mandatory
@@ -416,26 +416,25 @@ cited, permission to use these artefacts is not granted.
 BibTeX:
 
 ```bibtex
-
 @Article{app16094115,
-AUTHOR = {Gemirter, Cavide Balkı and Korkmaz, Emin Erkan and Goularas, Dionysis},
-TITLE = {CoDA: A Cognitive-Inspired Approach for Domain Adaptation},
-JOURNAL = {Applied Sciences},
-VOLUME = {16},
-YEAR = {2026},
-NUMBER = {9},
-ARTICLE-NUMBER = {4115},
-URL = {https://www.mdpi.com/2076-3417/16/9/4115},
-ISSN = {2076-3417},
-DOI = {10.3390/app16094115}
+  author         = {Gemirter, Cavide Balkı and Korkmaz, Emin Erkan and Goularas, Dionysis},
+  title          = {CoDA: A Cognitive-Inspired Approach for Domain Adaptation},
+  journal        = {Applied Sciences},
+  year           = {2026},
+  volume         = {16},
+  number         = {9},
+  article-number = {4115},
+  issn           = {2076-3417},
+  doi            = {10.3390/app16094115},
+  url            = {https://www.mdpi.com/2076-3417/16/9/4115}
 }
 ```
 
 Plain-text:
 
-> Gemirter, C. B., Korkmaz, E. E., & Goularas, D. (2026). *CoDA: A
-> Cognitive-Inspired Approach for Domain Adaptation*. Applied Sciences
-> (submitted). https://github.com/cbalkig/CoDA
+> Gemirter, C. B., Korkmaz, E. E., & Goularas, D. (2026). CoDA: A
+> Cognitive-Inspired Approach for Domain Adaptation. *Applied Sciences*,
+> *16*(9), 4115. https://doi.org/10.3390/app16094115
 
 GitHub users: click **“Cite this repository”** in the sidebar — the button is
 powered by [`CITATION.cff`](./CITATION.cff) and produces both BibTeX and
