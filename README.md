@@ -436,8 +436,9 @@ See `requirements.txt`. Key versions:
 This repository is released under the
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license: free to
 use, share, and adapt for any purpose with attribution. See
-[LICENSE](LICENSE) for details — citing the paper is the preferred form of
-attribution.
+[LICENSE](LICENSE) for the full license text. Copyright (c) 2026 Cavide Balkı
+Gemirter, Emin Erkan Korkmaz, Dionysis Goularas. Citing the paper (below) is
+the preferred form of attribution.
 
 ## Citation
 
