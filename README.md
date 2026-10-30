@@ -12,16 +12,14 @@ Reference implementation for the paper
 > DOI: [10.3390/app16094115](https://doi.org/10.3390/app16094115) · Full manuscript: [`CoDA.pdf`](./CoDA.pdf)
 
 > [!IMPORTANT]
-> ### 📣 Citation is mandatory
+> ### 📣 Please cite the paper
 >
-> **If you use this code, the Fruits-3D dataset, the 3D assets, or any
-> derived artefact — in academic work, a technical report, a product, a
-> blog post, a tutorial, or a fork — you must cite the paper.**
->
-> Copy the BibTeX entry from the [Citation](#citation) section at the bottom
-> of this README, or use GitHub's "Cite this repository" button (backed by
-> [`CITATION.cff`](./CITATION.cff)). Redistributions of the 3D models and
-> the Fruits-3D renders are conditional on this attribution.
+> This repository, the Fruits-3D dataset and the 3D assets are released under
+> **CC BY 4.0**. If you use any of them — in a paper, thesis, technical report,
+> product, blog post, tutorial, or fork — please give credit by **citing the
+> paper**. Copy the BibTeX entry from the [Citation](#citation) section at the
+> bottom of this README, or use GitHub's "Cite this repository" button (backed by
+> [`CITATION.cff`](./CITATION.cff)).
 
 CoDA is a synthetic-to-real Unsupervised Domain Adaptation (UDA) framework
 that takes inspiration from infant cognitive development. It generates a
@@ -412,7 +410,7 @@ See `requirements.txt`. Key versions:
 This repository is released under the
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license: free to
 use, share, and adapt for any purpose with attribution. See
-[LICENSE](LICENSE) for details — citing the paper is the required form of
+[LICENSE](LICENSE) for details — citing the paper is the preferred form of
 attribution.
 
 ## Citation
@@ -420,12 +418,12 @@ attribution.
 This repository is archived on Zenodo with the DOI
 [10.5281/zenodo.23377177](https://doi.org/10.5281/zenodo.23377177).
 
-**Citation is a required condition for any use** of this repository — source
-code, the Fruits-3D dataset, the 3D `.usdz` assets shared via Drive, and any
-rendered artefacts derived from them. This applies to research papers,
-technical reports, student projects, blog posts, tutorials, product
-integrations, forks, and any public derivative work. If the paper is not
-cited, permission to use these artefacts is not granted.
+Everything here — source code, the Fruits-3D dataset, the 3D `.usdz` assets
+shared via Drive, and any rendered artefacts derived from them — is licensed
+under CC BY 4.0. The attribution that the license asks for is a citation of
+the paper. Please cite it in research papers, technical reports, student
+projects, blog posts, tutorials, product integrations, forks, and any other
+public derivative work.
 
 BibTeX:
 

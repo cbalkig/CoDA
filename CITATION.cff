@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: >-
-  If you use this code, the Fruits-3D dataset, the 3D assets, or any derived
-  artefact (research, technical report, product, blog, tutorial, fork, or any
-  other public derivative), you must cite the paper below. Citation is a
-  required condition of use.
+  This repository, the Fruits-3D dataset and the 3D assets are released under
+  CC BY 4.0. If you use any of them (research, technical report, product,
+  blog, tutorial, fork, or any other derivative), please give credit by citing
+  the paper below.
 title: "CoDA: A Cognitive-Inspired Approach for Domain Adaptation"
 abstract: >-
   CoDA is a synthetic-to-real Unsupervised Domain Adaptation framework
