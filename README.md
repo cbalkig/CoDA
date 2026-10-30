@@ -1,6 +1,7 @@
 # CoDA: A Cognitive-Inspired Approach for Domain Adaptation
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23377177.svg)](https://doi.org/10.5281/zenodo.23377177)
+[![Dataset on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Fruits--3D-yellow)](https://huggingface.co/datasets/cbalkig/Fruits-3D)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 Reference implementation for the paper
@@ -306,10 +307,35 @@ Headline result (paper Table 5, RepVGG-B3 from scratch, average Macro-F1
 across the three target test sets): **CoDA 77.12 % vs. ImageNet-pretrained
 baseline 78.23 %.**
 
+### Data access — Fruits-3D renders (Hugging Face)
+
+The 12,000 rendered training images (2,400 per class; per asset 100 HDR Nature,
+50 HDR Studio, 50 Solid Color, 40 Sculpture) are published on the Hugging Face Hub
+under CC BY 4.0:
+
+<https://huggingface.co/datasets/cbalkig/Fruits-3D>
+
+```python
+from datasets import load_dataset
+ds = load_dataset("cbalkig/Fruits-3D")                                           # label = fruit class
+sculpture = load_dataset("cbalkig/Fruits-3D", data_files="data/*/sculpture_*.png")  # one mode only
+```
+
+The `data/` folder on the Hub has exactly the layout `train_eval` expects as
+`storage.source_folder` (one folder per class, rendering mode as filename
+prefix), so you can skip Phase I entirely:
+
+```bash
+pip install huggingface_hub
+hf download cbalkig/Fruits-3D --repo-type dataset --local-dir ./data/Fruits-3D/hf
+# then point storage.source_folder in train_eval/yamls/*.yaml to ./data/Fruits-3D/hf/data
+```
+
 ### Data access — 3D models
 
-The 50 textured `.usdz` assets used to render Fruits-3D are hosted on
-Google Drive (access-gated):
+You only need the 3D assets if you want to re-render Fruits-3D yourself
+(Phase I). The 50 textured `.usdz` assets are hosted on Google Drive
+(access-gated, because the SketchFab models carry their own licences):
 
 <https://drive.google.com/drive/folders/1TVn_gcFz-BqqygZnVE9uqhYaQqqHG11a?usp=drive_link>
 
